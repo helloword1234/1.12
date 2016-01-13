@@ -47,7 +47,7 @@
     self.tableView.footer.hidden = YES;
 }
 
-
+//上边显示的标语
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-30, 30)];
      view.backgroundColor=[UIColor colorWithRed:(15*16+11)/255.0 green:(16*15+9)/255.0 blue:14*16/255.0 alpha:1.0];
@@ -107,7 +107,7 @@
                                     NSDictionary *dic = responseObject[@"data"];
                                     if (dic.count == 0) {
                                         _datas = nil;
-                                    } else {
+     　　　　　　　　　　　　　　　　　　　　  } else {
                                         if ([dic isKindOfClass:[NSDictionary class]] && dic[@"glist"]) {
                                             if (page == 1) {
                                                 _datas = [responseObject[@"data"][@"glist"] mutableCopy];

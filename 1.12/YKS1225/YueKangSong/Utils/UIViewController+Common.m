@@ -11,17 +11,21 @@
 #import "YKSTools.h"
 
 @implementation UIViewController (Common)
-
+//显示显示框
 - (void)showProgress
 {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
+
+//隐藏显示框
 - (void)hideProgress
 {
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
+
+//弹出提示框
 - (void)showToastMessage:(NSString *)message time:(CGFloat)time {
     if (IS_EMPTY_STRING(message)) {
         return ;

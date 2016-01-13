@@ -217,20 +217,22 @@
 
 //地址逻辑判断
 -(void)diZhiLuoJiPanDuan{
+    //登陆的情况下进行定位
     if ([YKSUserModel isLogin]) {
         
         NSDictionary *dic=[YKSUserModel shareInstance].currentSelectAddress;
+        //定位的经纬度
         NSString *latAndLng = dic[@"community_lat_lng"];
         NSArray *ary = [latAndLng componentsSeparatedByString:@","];
         NSString *lat = ary[0];
         NSString *lng = ary[1];
         if ( ! ([dic isEqualToDictionary:@{}] || (dic == nil) || ( dic == NULL) )){
-
+        //设置用户数据模型的经纬度赋值
             if ([YKSUserModel shareInstance].lat == 0) {
                 [YKSUserModel shareInstance].lat = [lat floatValue];
                 [YKSUserModel shareInstance].lng = [lng floatValue];
             }
-            //把当前位置(经纬度)传给服务器
+            //如果登陆了把当前位置(经纬度)传给服务器
             if ([YKSUserModel isLogin]) {
                 [GZBaseRequest locationUploadLat:[lat floatValue]
                                              lng:[lng floatValue]
@@ -241,6 +243,7 @@
 
             [self setBtnTitleWithCurrentAddress];
         }
+        
         else {
             static dispatch_once_t onceToken;
             dispatch_once(&onceToken, ^{
@@ -250,6 +253,7 @@
             [self startSingleLocationRequest];
         }
     }
+    //如果没登陆的时候
     else {
         [self.addressBtn setTitle:[NSString stringWithFormat:@"正在获取位置"] forState:UIControlStateNormal];
         [self startSingleLocationRequest];

@@ -663,7 +663,7 @@
     return cell;
 }
 
-
+//说明书
 - (IBAction)gotoShouMing:(id)sender {
     
     
@@ -681,6 +681,7 @@
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
+//单买购买界面
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"gotoYKSSingleBuyViewController"]) {
         YKSSingleBuyViewController *singleVC = segue.destinationViewController;
@@ -883,8 +884,9 @@
                 }
             }
         }];
-        
-        [self.navigationController popViewControllerAnimated:YES];
+        //产品详情选择地址之后回到首页
+//        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
         
     }
     
